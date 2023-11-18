@@ -1,0 +1,40 @@
+.error {
+    text-align: center;
+/*    text-align-last: center;*/
+    background: #c0c0c0;
+    padding: 20px;
+    margin: 10px 7px;
+    box-shadow: 1px 1px 5px #555555;
+}
+
+.error h2 {
+    margin-bottom: 5px;
+}
+
+.fatal-error {
+    
+}
+
+/* Fatal */
+
+.fatal-error h2 {
+    color: #dd2222;
+}
+
+.fatal-error h4 {
+    color: #bb0000;
+}
+
+/* Warning */
+
+.warning-error {
+    
+}
+
+.warning-error h2 {
+    color: #ff9900;
+}
+
+.warning-error h4 {
+    color: #dd7700;
+}

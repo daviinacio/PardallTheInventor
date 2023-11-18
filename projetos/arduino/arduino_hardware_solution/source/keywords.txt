@@ -1,0 +1,52 @@
+#######################################
+# CLASSES (KEYWORD1)
+#######################################
+
+HardWare	KEYWORD1
+HCPS	KEYWORD1
+LCPS	KEYWORD1
+AIP	KEYWORD1
+AOF	KEYWORD1
+CI01	KEYWORD1
+MiniThread	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+run	KEYWORD2
+
+shutdown	KEYWORD2
+
+read	KEYWORD2
+get	KEYWORD2
+set	KEYWORD2
+
+reset	KEYWORD2
+
+# Specific of AIP
+setBufferLength	KEYWORD2
+
+# Specific of AOF
+setBreaking	KEYWORD2
+isFinished	KEYWORD2
+setPWM	KEYWORD2
+
+# Specific of CI01
+S_RIGHT	KEYWORD2
+S_LEFT	KEYWORD2
+S_ALERT	KEYWORD2
+S_OFF	KEYWORD2
+
+F_AUTO	KEYWORD2
+
+setLDR	KEYWORD2
+setFarol	KEYWORD2
+
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+

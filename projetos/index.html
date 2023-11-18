@@ -1,0 +1,448 @@
+<script src="/js/page-script.js"></script>
+<link href="/css/page-style.css" rel="stylesheet"/>
+
+<style>
+    .postLink {
+        color: white;
+    /*    background: green;*/
+        padding: 10px;
+        font-size: 25px;
+        font-weight: lighter;
+
+    }
+    
+    #page-content {
+        margin: 5px 0;
+        padding: 5px 10px;
+        margin: auto;
+        
+        column-count: 3;
+    }
+    
+    .post-column-index {
+        break-inside: avoid-column;
+/*        background: green;*/
+/*        margin: 5px 0;*/
+        padding: 5px 0;
+/*        height: 500px;*/
+/*        display: inline-block;*/
+/*        display: inline-table;*/
+/*        width: inherit*/
+    }
+    
+    .post-index {
+        height: inherit;
+        box-shadow: 0 1px 2px #555555;
+        background: #c7c7c7;
+/*        background: red;*/
+        padding: 10px;
+/*        max-width: 29%;*/
+/*        margin: 5px;*/
+        display: block;
+        
+/*        display: inline-block;*/
+/*
+        text-align: left;
+        text-align-last: left;
+*/
+    }
+    
+    .post-index:hover {
+        text-decoration: none;
+        box-shadow: 0 1px 6px #222222;
+        background: #cdcdcd;
+    }
+    
+    .post-index img {
+        display: inline-block;
+        width: 80px;
+        border-style: solid;
+        border-width: thin;
+        float: left;
+        margin-right: 10px;
+    }
+    
+    .project-title {
+        width: 100%;
+        font-style: normal;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    
+    .page-content-descrition-conteiner {
+        padding: 10px 10px 0 0;
+/*        background: lightblue;*/
+        height: 90px;
+        
+        overflow: hidden;
+    }
+    
+    .page-content-descrition {
+        text-align: justify;
+/*        background: lightgreen;*/
+/*        height: 70px;*/
+/*        word-wrap: break-word;*/
+/*        word-break: keep-all;*/
+        
+/*        text-overflow: ellipsis;*/
+/*        overflow: hidden;*/
+    }
+    
+    .page-content-descrition div {
+/*        height: 1%;*/
+/*        position: static;*/
+    }
+    
+    .page-content-descrition span p {
+        font-size: 18px;
+    }
+    
+    /*************** FILTER *******************/
+    
+    .post-filter-conteiner {
+/*        position: fixed;*/
+        background: #00a0a0;
+/*        background: red;*/
+/*        min-height: 20px;*/
+        width: 100%;
+       
+    }
+    
+    .post-filter {
+        padding: 0 10px;
+    }
+    
+    .post-category {
+        padding: 5px;
+        display: inline-block;
+/*        opacity: 0.25*/
+    }
+    
+    .post-category:hover {
+/*        opacity: 0.9*/
+    }
+    
+    
+    .post-search-conteiner {
+/*        background: blue;*/
+/*        position: fixed;*/
+        float: right;
+/*        height: 50px;*/
+        padding: 5px;
+    }
+    
+    .content-search-input {
+        border: none;
+        box-shadow: 0px 0px 2px #222222;
+/*
+        background: none;
+        margin: 0;
+        border: solid;
+        border-width: 1px;
+        border-color: #d0d0d0;
+        font-size: 18px;
+        padding: 2px 5px;
+        color: white;
+        display: inline-block;
+        height: 28px;
+        margin-top: 5px;
+        width: 190px;
+*/
+    }
+    
+    .content-search-submit {
+/*        background: red;*/
+        height: 30px;
+    }
+    
+    @media(max-width: 670px) {
+        .post-filter-conteiner {
+/*            background: none;*/
+/*            display: none;*/
+/*            position: fixed;*/
+/*            opacity: 0.5;*/
+/*            min-height: 0;*/
+            opacity: 0.8;
+        }
+        
+        .post-filter-conteiner:hover {
+/*            opacity: 1;*/
+        }
+        
+        .post-category {
+            display: block;
+/*            background: red;*/
+            position: fixed;
+            right: 0;
+            left: 0;
+            bottom: 5px;
+/*            display: none;*/
+            text-align: center;
+        }
+        
+        .post-search-conteiner {
+/*            background: green;*/
+/*            left: 50%;*/
+            right: 5px;
+            position: fixed;
+        }
+        
+        .content-search-input {
+            display: none;
+            box-shadow: 1px 1px 10px #000000;
+            border: solid;
+            border-width: 2px;
+            border-color: #00aaaa;
+/*            color: #007070;*/
+            color: white;
+            text-shadow: 0px 0px 2px #000000;
+        }
+        
+        .content-search-submit {
+            box-shadow: 1px 1px 10px #555555;
+        }
+        
+        .content-search-submit:hover {
+            box-shadow: 1px 1px 15px #555555;
+        }
+        
+        @media (top > 20){
+            .post-filter-conteiner {
+                background: red;
+            }
+        }
+    }
+    
+    @media (max-width: 800px) {
+        #page-content {
+            column-count: 2;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        #page-content {
+            column-count: 1;
+        }
+    }
+    
+</style>
+
+<div class="post-filter-conteiner">
+    <div class="centerScreen post-filter">
+        <div class="post-category">
+            <button class="categorySetter">All</button>
+            <button class="categorySetter">Arduino</button>
+            <button class="categorySetter">Android</button>
+            <button class="categorySetter">CSharp</button>
+            <button class="categorySetter">Java</button>
+        </div>
+
+        <div class="post-search-conteiner anti-topBar">
+            <input class="content-search-input" id="search-input"/>
+            <button class="content-search-submit">Buscar</button>
+        </div>
+    </div>
+</div>
+
+<div id="error-content"></div>
+
+<div id="page-content">
+<!--
+    <div class="post-column-index">
+         <a href="ert"  class="post-index">
+            <h2 class="project-title">" + posts[i].title + "</h2>
+            <h6>5 dias atrás</h6>
+            <div class="page-content-descrition-conteiner">
+                <div class="page-content-descrition">
+                    <img src="/img/android-icon.png"/>
+                    <span maxLength="10\">
+                        <p>" + posts[i].description + "</p>
+                    </span>
+                </div>
+            </div>
+         </a>
+    </div>
+-->
+<!--
+    <div  class="post-index">
+        <h2 class="project-title">Project Name</h2>
+        <h6>5 dias atrás</h6>
+        <div class="page-content-descrition-conteiner">
+            <div class="page-content-descrition">
+                <img src="/gif/loading_2.gif"/>
+                <span maxLength="10">
+                    <p>Esta biblioteca é baseada em Threads, função que não está incluida na biblioteca padrão do Arduino. Por isso é fundamental a instalação da biblioteca <a>ArduinoThread-master</a>...</p>
+                </span>
+            </div>
+        </div>
+    </div>
+-->
+    
+</div>
+
+<script>
+    var posts = [];
+    _CHANGE_HASH(updateIndex);
+    
+    //$("#error-content").load("/error/404.html");
+    callError(404, "#error-content", false);
+    
+    //_ADD("category", "all");
+    
+    loadIndex();
+    
+    updateCategorySetter();
+    updateIndex();
+    
+    function loadIndex(){
+        var postsDir = readTextFile("/projetos/indice.txt");
+        postsDir = postsDir.split('\r');
+
+        for(var i = 0; i < postsDir.length; i++){
+            posts[i] = {
+                title: '', link: '',
+                init: function(content){
+                    this.description = content.split('|');
+                    this.link = this.description[0];
+                    this.category = this.link.split('/')[0];
+                    this.title = this.link.split('/')[1];
+
+                    //this.description = this.description[1];
+                    
+                    //alert(this.link);
+                    this.description = readTextFile("/projetos/" + this.link);
+                    //alert(this.link + " - " + this.description);
+                    if(this.description != undefined)
+                        this.description = this.description.split("</h3>")[1].split("<hr>")[0];
+                    else
+                        this.description = "Previsualização não encontrada"
+                    
+                    this.category = this.category.replace('\n', '');
+                    this.link = "/#projetos/" + this.link;
+                }
+            };
+
+            posts[i].init(postsDir[i]);
+        }
+    }
+    
+    function updateIndex(){
+        $("#search-input").val(_GET("q"));
+        $("#page-content").html(""); // To clean the page
+        
+        for(var i = 0; i < posts.length; i++){
+            if(_GET("category") != "all" && _GET("category") != undefined)
+                if(posts[i].category != _GET("category"))
+                    continue;
+            
+            if(_GET("q") != "" && _GET("q") != undefined){
+                if(posts[i].title.toLowerCase().indexOf(_GET("q").toLowerCase()) < 0)
+                    continue;
+            }
+            
+//            $("#page-content").append(
+//            "<div class=\"post-column-index\">" + 
+//            "<a href=\"" + posts[i].link + "\"  class=\"post-index\"></div>" +
+//            "</div>");
+
+            $("#page-content").append(
+            "<div class=\"post-column-index\">" +
+            "     <a href=\"" + posts[i].link + "\"  class=\"post-index\">\n"+
+            "        <h2 class=\"project-title\">" + posts[i].title + "</h2>\n" +
+            "        <h6>5 dias atrás</h6>\n" +
+            "        <div class=\"page-content-descrition-conteiner\">\n"  +
+            "            <div class=\"page-content-descrition\">\n" +
+            "                <img src=\"/img/" + posts[i].category + "-icon.png\"/>\n" +
+            "                <span maxLength=\"10\">\n" +
+            "                    <p>" + posts[i].description + "</p>\n" +
+            "                </span>\n" +
+            "            </div>\n" +
+            "        </div>\n" +
+            "     </a>" +
+            "</div>");
+
+            /*
+            //var post = postsDir[i].replace('\n', '');
+
+            var postElem = document.createElement("div");
+            postElem.setAttribute("class", "post");
+            //postElem.style.textAlign = "center";
+            //postsDir.setAttribute("href", "/");
+
+            var title = document.createElement("a");
+            title.setAttribute("class", "postLink link")
+            title.innerHTML = posts[i].title;
+            title.href = posts[i].link;
+
+            postElem.appendChild(title);
+
+            //document.getElementById("page-content").appendChild(postElem);
+            */
+        }
+        
+        //alert($("#page-content").html());
+        if($("#page-content").html() == ""){
+            $("#page-content").hide();
+            $("#error-content").show();
+        } else {
+            $("#page-content").show();
+            $("#error-content").hide();
+        }
+        
+        //callError(404, "#error-content");
+        
+        //alert($("#page-content").html());
+        
+        //$("#page-content").html("TEt");
+        
+        //alert($("#page-content").html());
+        /*if($("#page-content").html() == "" && isMobileScale)
+            $("footer").css("position", "absolute");
+        else $("footer").css("opacity", "initial");*/
+        
+        
+        //$(".post-category").css("bottom", $("body").css("top"));
+    }   
+    function updateCategorySetter(){
+        function setCategorySetterOnClick(i){
+            $(".categorySetter")[i].onclick = function(){
+                _SET("category", $(".categorySetter").get(i).innerHTML.toLowerCase());
+            }
+        }
+        for(var i = 0; i < $(".categorySetter").length; i++)
+            setCategorySetterOnClick(i);
+    }
+    
+    //$("#search-input").val(_GET("q"));
+    
+    $("#search-input").on('input', function(e){
+       if(!isMobileScale)
+           $(".content-search-submit").click();
+    });
+    
+    $("#search-input").keypress(function(e){
+        if(e.which == 13)
+            $(".content-search-submit").click();
+    })
+    
+    $(".content-search-submit").click(function(){
+        if($("#search-input").css("display") != "none"){
+            _SET("q", $("#search-input").val());
+        } else
+            $("#search-input").fadeIn();
+    });
+    
+    $(".post-search-conteiner").mouseleave(function(){
+        if(isMobileScale)
+            $("#search-input").fadeOut();
+    });
+        
+    var teste = document.getElementsByClassName("post-index");
+    
+    for(var i = 0; i < teste.length; i++){
+        //alert(teste[i].innerHTML);
+    }
+    
+    //alert(_GET("category"));
+</script>
