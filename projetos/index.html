@@ -295,7 +295,7 @@
     updateIndex();
 
     function loadIndex() {
-        var postsDir = readTextFile("/projetos/indice.txt");
+        var postsDir = readTextFile("/PardallTheInventor/projetos/indice.txt");
         postsDir = postsDir.split('\r');
 
         for (var i = 0; i < postsDir.length; i++) {
@@ -310,7 +310,7 @@
                     //this.description = this.description[1];
 
                     //alert(this.link);
-                    this.description = readTextFile("/projetos/" + this.link);
+                    this.description = readTextFile("/PardallTheInventor/projetos/" + this.link);
                     //alert(this.link + " - " + this.description);
                     if (this.description != undefined)
                         this.description = this.description.split("</h3>")[1].split("<hr>")[0];
