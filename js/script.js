@@ -3,28 +3,28 @@ var page = "";
 
 /*              GLOBAL VARIABLES AND FUNCTIONS          */
 var CONTENT_FADEOUT_DELAY = 100;
-var CONTENT_FADEIN_DELAY  = 500;
+var CONTENT_FADEIN_DELAY = 500;
 
 var isMobileScale = false;
 
-$(window).resize(function() {
+$(window).resize(function () {
     updateVisual();
 });
 
-$(window).load(function() {
+$(window).load(function () {
     updateAll();
-    
-    $.ajaxSetup ({
+
+    $.ajaxSetup({
         cache: true
     });
-    
+
     //alert(_GET());
-    
-    if(_GET() == "")
+
+    if (_GET() == "")
         _SET("home");
 });
 
-window.onhashchange = function(event) {
+window.onhashchange = function (event) {
     updatePageContent();
     hashchange();
     //alert(location.hash);
@@ -36,36 +36,36 @@ var topbarLink = $(".topbarLink");
 
 /*                  PAGE FUNCTIONS                      */
 
-function isValidPage(page){
-    for(var i = 0; i < validPageIndex.length; i++)
-        if(page == validPageIndex[i])
+function isValidPage(page) {
+    for (var i = 0; i < validPageIndex.length; i++)
+        if (page == validPageIndex[i])
             return true;
     return false;
 }
 
-function setPage(page){
+function setPage(page) {
     _SET(page);
 }
 
-function callError(errorId, element, effect){
-    if(element == undefined) element = "#content";
+function callError(errorId, element, effect) {
+    if (element == undefined) element = "#content";
     //alert(element + " # " + $(element).html());
-    if(effect == true)
-        loadContent(element, "/error/" + errorId + ".html", false);
-    else $(element).load("/error/" + errorId + ".html");
+    if (effect == true)
+        loadContent(element, "/PardallTheInventor/error/" + errorId + ".html", false);
+    else $(element).load("/PardallTheInventor/error/" + errorId + ".html");
     //alert(local);
 }
 
-function getError(errorId){
+function getError(errorId) {
     //return $load("/error/" + errorId + ".html");
 }
 
-function updateAll(){
+function updateAll() {
     updateVisual();
     updatePageContent();
 }
 
-function updateVisual(){
+function updateVisual() {
     updateScale();
     updateTopbar();
     var headerHeight = document.getElementById("header").offsetHeight;
@@ -75,20 +75,20 @@ function updateVisual(){
 /*              PAGE VISUAL FUNCTIONS                   */
 
 
-function updateScale(){
+function updateScale() {
     isMobileScale = window.innerWidth < 767;
 }
 
-function showTopBar(){
+function showTopBar() {
     $("#topBar").fadeIn();
     $(".anti-topBar").hide();
 }
 
-function hideTopbar(){
-    if(isMobileScale)
+function hideTopbar() {
+    if (isMobileScale)
         topBar.fadeOut();
-    
-    setTimeout(function(){
+
+    setTimeout(function () {
         $(".anti-topBar").show();
     }, 400);
 }
@@ -98,59 +98,59 @@ topbarLink.click(hideTopbar);
 $("header").mouseleave(hideTopbar);
 
 //$("#topBarPush").mouseenter(function(){ $("#topBar").fadeIn(); });
-$("#topBarPush").click(function(){
-    if($("#topBar").css("display") == "none") showTopBar();
+$("#topBarPush").click(function () {
+    if ($("#topBar").css("display") == "none") showTopBar();
     else hideTopbar();
 });
 
-function updateTopbar(){
+function updateTopbar() {
     /*function setTopBarLinkOnClick(i){
         topbarLink[i].onclick = function(){ setPage(topbarLink[i].innerHTML.toLowerCase()); }
     }
     
     for(var i = 0; i < topbarLink.length; i++)
         setTopBarLinkOnClick(i);*/
-    
-    for(var i = 0; i < topbarLink.length; i++)
+
+    for (var i = 0; i < topbarLink.length; i++)
         topbarLink[i].href = "#" + topbarLink[i].innerHTML.toLowerCase() + '/';
-    
-    if(isMobileScale) topBar.hide();
-    else              topBar.show();
+
+    if (isMobileScale) topBar.hide();
+    else topBar.show();
 }
 
 /*                    PAGE CONTENT                      */
 
-function updatePageContent(){
-    if(_GET() == "" || _GET() == "/") {
+function updatePageContent() {
+    if (_GET() == "" || _GET() == "/") {
         _SET("home/"); return;
     }
-    
-    if(page != _GET()){
-        _CHANGE_HASH(function(){}); // reset onHashChange
-        
+
+    if (page != _GET()) {
+        _CHANGE_HASH(function () { }); // reset onHashChange
+
         loadContent("#content", _GET());
-        
+
     }
     page = _GET();
-    
+
     updateTopbar();
 }
 
-function loadContent(element, url, loading){
+function loadContent(element, url, loading) {
     $(element).fadeOut(CONTENT_FADEOUT_DELAY);
     $("footer").fadeOut(CONTENT_FADEOUT_DELAY);
-    if(loading)
+    if (loading)
         $(".ajax_loading").show();
-    setTimeout(function(){
-        $(element).load(url, function(text, feed){
+    setTimeout(function () {
+        $(element).load(url, function (text, feed) {
             console.info(" Load " + feed + ": " + url);
-            if(feed == "success"){
+            if (feed == "success") {
                 //alert(text);
             } else
-            if(feed == "error")
-                callError(404);
+                if (feed == "error")
+                    callError(404);
 
-            if(loading)
+            if (loading)
                 $(".ajax_loading").fadeOut(CONTENT_FADEOUT_DELAY);
             $(element).fadeIn(CONTENT_FADEIN_DELAY);
             $("footer").fadeIn(CONTENT_FADEIN_DELAY);
@@ -171,12 +171,12 @@ function loadContent(element, url, loading){
 //            this.link = link;
 //        }
 //    }
-//    
+//
 //    post.create(title, subTitle, link);
-//    
+//
 //    return post;
 //}
 //
 //function printPost(post){
-//    
+//
 //}
